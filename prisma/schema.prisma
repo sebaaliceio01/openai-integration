@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String            @id @default(cuid())
+  email              String            @unique
+  password           String?           @map("hashedPassword")
+  name               String?
+  role               String?
+  plan               SubscriptionPlan? @relation(fields: [subscriptionPlanId], references: [id])
+  subscriptionPlanId String?           @map("subscriptionPlanId")
+}
+
+model SubscriptionPlan {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  interval    String
+  stripeId    String
+  users       User[]
+}
