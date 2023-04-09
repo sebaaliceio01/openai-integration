@@ -20,6 +20,9 @@ dist
 # Local folder
 local
 
+#ENV
+.env
+
 # testing
 coverage
 
