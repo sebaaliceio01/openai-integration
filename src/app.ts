@@ -8,6 +8,7 @@ import { config } from '@/config';
 import session from 'express-session';
 import PrismaService from './services/prisma.service';
 import UserController from './controllers/user/controller/user.controller';
+import IAController from './controllers/IA/controller/ia.controller';
 
 const prismaClient = new PrismaClient();
 
@@ -31,6 +32,6 @@ app.get('/', async (req, res) => {
   res.send('OK')
 })
 
-attachControllers(app, [AuthenticationController, UserController]);
+attachControllers(app, [AuthenticationController, UserController, IAController]);
 
 export { app };

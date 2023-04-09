@@ -10,4 +10,8 @@ export const config: IConfig = {
     secret: process.env.SESSION_SECRET as string,
   },
   jwtSecretKey: process.env.JWT_SECRET as string,
+  openai: {
+    key: process.env.OPENAI_API_KEY as string,
+    org: process.env.OPENAI_ORG as string
+  }
 };

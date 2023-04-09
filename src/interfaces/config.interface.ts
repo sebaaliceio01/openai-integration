@@ -8,4 +8,8 @@ export interface IConfig {
     secret: string;
   };
   jwtSecretKey: string;
+  openai: {
+    key: string
+    org: string
+  }
 }
